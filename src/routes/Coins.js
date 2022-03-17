@@ -1,28 +1,42 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Coins() {
     const [loading, setLoading] = useState(true);
     const [coins, setCoins] = useState([]);
+    const [option, setOption] = useState("xx");
+    const onChange = (event) => {
+        setOption(event.target.value);
+    };
+    const getCoins = async () => {
+        const json = await (
+            await fetch(
+                "https://api.coinpaprika.com/v1/tickers"
+            )
+        ).json();
+        setCoins(json.slice(0, 5000));
+        setLoading(false);
+    };
     useEffect(() => {
-        fetch("https://api.coinpaprika.com/v1/tickers")
-            .then((response) => response.json())
-            .then((json) => {
-                setCoins(json);
-                setLoading(false);
-            })
+        getCoins();
     }, []);
     return (
         <div>
-            {loading ? (<string>Loading...</string>) : (
-                <ul>
-                    {coins && coins.map((coin) => (
-                        <li key={coin.name}>
-                            {coin.name} ({coin.symbol}) : ${coin.quotes.USD.price}
-                        </li>
-                    ))}
-                </ul>
+            {loading ? (<h1>Loading...</h1>) : (
+                <div>
+                    <select value={option} onChange={onChange}>
+                        <option value="xx">---select option---</option>
+                        {coins && coins.map((coin) => (
+                            <option value={coin.id} key={coin.id}>
+                                {coin.name} ({coin.symbol})
+                            </option>
+                        ))}
+                    </select>
+                    {option === "xx" ? null : (
+                        <button><Link to={`/coin-info/${option}`}>Go</Link></button>
+                    )}
+                </div>
             )}
-
         </div>
     );
 }
