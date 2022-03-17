@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import styles from "./Coins.module.css";
 
 function Coins() {
     const [loading, setLoading] = useState(true);
@@ -21,9 +22,10 @@ function Coins() {
         getCoins();
     }, []);
     return (
-        <div>
+        <div className={styles.container}>
             {loading ? (<h1>Loading...</h1>) : (
                 <div>
+                    <h1>SELECT</h1>
                     <select value={option} onChange={onChange}>
                         <option value="xx">---select option---</option>
                         {coins && coins.map((coin) => (
@@ -36,8 +38,9 @@ function Coins() {
                         <button><Link to={`/coin-info/${option}`}>Go</Link></button>
                     )}
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 }
 export default Coins;

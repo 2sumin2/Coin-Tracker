@@ -1,0 +1,23 @@
+.home{
+    display:flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.img{
+    animation: rotate 1.5s linear infinite;
+}
+@keyframes rotate {
+    0%{
+        transform: rotateY( 0deg );
+    }
+    100%{
+        transform: rotateY( -360deg );
+    }  
+}
+.noic{
+    transform: rotateY( 180deg );
+}
+h1{
+    color:rgb(238, 255, 0);
+}

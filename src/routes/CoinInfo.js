@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import styles from "./CoinInfo.module.css";
 
 function CoinInfo() {
     const { id } = useParams();
@@ -18,19 +19,21 @@ function CoinInfo() {
         getData();
     }, []);
     return (
-        <div>
+        <div className={styles.container}>
             {loading ? <h1>Loading...</h1> : (
                 <div>
-                    <h2>{coin.name}</h2>
+                    <h1>{coin.name}</h1>
                     <p>{coin.description}</p>
-                    <ul>
-                        {coin.links.explorer ? <li><a href={`${coin.links.explorer[0]}`} target="_blank">explorer</a></li> : null}
-                        {coin.links.facebook ? <li><a href={`${coin.links.facebook[0]}`} target="_blank">facebook</a></li> : null}
-                        {coin.links.reddit ? <li><a href={`${coin.links.reddit[0]}`} target="_blank">reddit</a></li> : null}
-                        {coin.links.source_code ? <li><a href={`${coin.links.source_code[0]}`} target="_blank">source_code</a></li> : null}
-                        {coin.links.website ? <li><a href={`${coin.links.website[0]}`} target="_blank">website</a></li> : null}
-                        {coin.links.youtube ? <li><a href={`${coin.links.youtube[0]}`} target="_blank">youtube</a></li> : null}
-                    </ul>
+                    <div className={styles.listContainer}>
+                        <ul>
+                            {coin.links.explorer ? <li><a href={`${coin.links.explorer[0]}`} target="_blank" className={styles.link}>explorer</a></li> : null}
+                            {coin.links.facebook ? <li><a href={`${coin.links.facebook[0]}`} target="_blank" className={styles.link}>facebook</a></li> : null}
+                            {coin.links.reddit ? <li><a href={`${coin.links.reddit[0]}`} target="_blank" className={styles.link}>reddit</a></li> : null}
+                            {coin.links.source_code ? <li><a href={`${coin.links.source_code[0]}`} target="_blank" className={styles.link}>source_code</a></li> : null}
+                            {coin.links.website ? <li><a href={`${coin.links.website[0]}`} target="_blank" className={styles.link}>website</a></li> : null}
+                            {coin.links.youtube ? <li><a href={`${coin.links.youtube[0]}`} target="_blank" className={styles.link}>youtube</a></li> : null}
+                        </ul>
+                    </div>
                 </div>
             )}
         </div>

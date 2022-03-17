@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import coinImg from "../img/coin.png";
+import styles from "./Home.module.css";
 
 function Home() {
     return (
-        <div>
-            <h1><Link to={`/coins`}><img src={coinImg} alt="coin" /></Link></h1>
+        <div className={styles.home}>
+            <Link to={`/coins`}>
+                <h1>COIN</h1>
+                <img src={coinImg} alt="coin" className={styles.img} />
+                <h1 className={styles.noic}>COIN</h1>
+            </Link>
         </div>
     );
 }
