@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Coin-Tracker/static/css/main.15751e73.css",
+    "main.js": "/Coin-Tracker/static/js/main.56015914.js",
+    "static/media/coin.png": "/Coin-Tracker/static/media/coin.bec6059ffae8a7b8373b.png",
+    "index.html": "/Coin-Tracker/index.html",
+    "main.15751e73.css.map": "/Coin-Tracker/static/css/main.15751e73.css.map",
+    "main.56015914.js.map": "/Coin-Tracker/static/js/main.56015914.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.15751e73.css",
+    "static/js/main.56015914.js"
+  ]
+}
